@@ -1,0 +1,39 @@
+<section >
+	<ul class="nav">
+		<li class="li" ng-class="{active : panel.isSelected(1)}" ng-click="panel.selectTab(1)"><button>Description</button></li>
+		<li class="li" ng-class="{active : panel.isSelected(2)}" ng-click="panel.selectTab(2)"><button>Specs</button></li>
+		<li  class="li" ng-class="{active : panel.isSelected(3)}" ng-click="panel.selectTab(3)"><button>Reviews</button></li>
+		<li  class="li"><button ng-show="product.canPurchase">Add to cart</button></li>
+		<product-description class="panel" ng-show="panel.isSelected(1)" >
+
+		</product-description>
+		<div class="panel" ng-show="panel.isSelected(2)">
+			<h4>No Specs Yet</h4>
+		</div>
+		<div class="panel" ng-show="panel.tab === 3">
+			<div ng-repeat="review in product.reviews" product-review>
+
+			</div>
+			<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+				<p>live review</p>
+				<blockquote>
+					<strong>{{reviewCtrl.review.stars}} Stars</strong>
+					{{reviewCtrl.review.body}}
+					<cite class="clearfix">—{{reviewCtrl.review.author}}</cite>
+				</blockquote>
+
+				<h5>submit a new review</h5>
+				<select ng-model="reviewCtrl.review.stars" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" required>
+					<options>value="">Rate the Product</options>
+				</select>
+				<textarea ng-model="reviewCtrl.review.body" class="form-control" required placeholder="Write a short review of the product..." title="Review"></textarea>
+				<input ng-model="reviewCtrl.review.author" type="email" required class="form-control" placeholder="jimmyDean@example.org" title="Email" />
+				<input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+				<p>review Form is {{reviewForm.$valid}}</p>
+			</form>
+		</div>
+
+
+
+	</ul>
+</section>

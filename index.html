@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" ng-app="store">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular Demo</title>
+	<script src="angular.min.js"></script>
+	<script src="app.js"></script>
+	<script src="app2.js"></script>
+	<link rel='stylesheet' href='app.css' />
+
+</head>
+<body>
+<div >
+<div  ng-controller="StoreController as store">
+	<!--<div ng-hide="store.test.soldOut">-->
+	<!--<h3>{{store.test.name}}</h3>-->
+	<!--<h4>{{store.test.description}}</h4>-->
+	<!--<h5 >{{store.test.price}}</h5>-->
+		<!--<ul class="nav">-->
+			<!--<li class="li" ng-click="tab = 1"><button>Description</button></li>-->
+			<!--<li class="li" ng-click="tab = 2"><button>Specs</button></li>-->
+			<!--<li  class="li" ng-click="tab=3"><button>Reviews</button></li>-->
+			<!-- -->
+		<!--</ul>-->
+		<!--{{tab}}-->
+		<!--&lt;!&ndash;<img ng-src="TravisCI-Full-Color-Vertical.png">&ndash;&gt;-->
+	<!--<button ng-show="store.test.canPurchase">Add to cart</button>-->
+	<!--</div>-->
+	<!--<div ng-hide="store.product[1].soldOut">-->
+		<!--<h1>{{store.product[1].name}}</h1>-->
+		<!--<h2>{{store.product[1].description}}</h2>-->
+		<!--<h3>{{store.product[1].price}}</h3>-->
+		<!--<button ng-show="store.product[1].canPurchase">Add to cart</button>-->
+	<!--</div>-->
+
+	<div ng-repeat="product in store.product | orderBy:'-price' | limitTo : 2">
+		<div ng-hide="product.soldOut">
+			<h3>{{product.name | uppercase}}</h3>
+			<h5>{{product.price | currency}}</h5>
+		<product-panel ></product-panel>
+			
+		</div>
+	</div>
+</div>
+	
+	
+
+</div>
+</div>
+<!--<div ng-app="test">-->
+	<!--<div  ng-controller="TestController as test">-->
+		<!--<h1>{{test.name}}</h1>-->
+	<!--</div>-->
+<!--</div>-->
+
+
+
+
+</body>
+</html>
